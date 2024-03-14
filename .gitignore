@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# nuclear option to remove .idea folder
+.idea/
