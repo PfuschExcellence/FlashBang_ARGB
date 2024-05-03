@@ -14,7 +14,7 @@ params:
  - pin D0
  - length of 12 
  - Type of addressable leds
- - wether we want to always overwrite the stripe (true) or if we only overwrite the leds up to last updated led (false)
+ - wether we want to always overwrite the *entire* stripe (true) or if we only overwrite the leds up to the last updated led, in other word skipping any trailing leds that did not change since the last put (false)
  - specifies the (fast_update behavior)[#FastUpdateBehavior]
 ```arduino
 LEDStripe<12> led_stripe_one =  LEDStripe(D0, WRGB, true); 
@@ -42,5 +42,5 @@ void loop(){
 
 FastUpdateBehaviour is a struct containing a ```delta_t``` field and a UpdateBehavior enum with the following variants:
 - skip: If delta t is to small, just continue without doing anything
-- block: If delta t is to small, block until enough time is elapsed
+- block: If delta t is to small, block until enough time has elapsed
 - anyways: Write data to the stripe in any case 

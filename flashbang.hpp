@@ -1,5 +1,3 @@
-#include <stdbool.h>
-
 // class RGB;
 class LED;
 
@@ -29,7 +27,7 @@ public:
   void put(RGB led, bool overwrite, bool force) {}
 };
 
-class ComplicatedARGB {
+class ComplexARGB {
 public:
   void put(LED leds[], int length, bool overwrite, bool force) {}
 };
@@ -84,7 +82,7 @@ enum EnumARGBType { SIMPLE_ARGB, COMPLICATED_ARGB };
 
 union UnionARGBType {
   SimpleARGB s;
-  ComplicatedARGB c;
+  ComplexARGB c;
 };
 
 class ARGBType {
@@ -96,7 +94,7 @@ public:
   void put(LED leds[], int length, bool overwrite) {
     if (e == EnumARGBType::SIMPLE_ARGB) {
       u.s.put(leds[0].get_color_or(BLACK), overwrite,
-              false); // false if we dont acutally wont to write (forcing the
+              false); // false if we dont acutally want to write (forcing the
                       // function in the chache)
 
       for (int i = 0; i < length; i++) {
